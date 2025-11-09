@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  prescription-service:
+    build: .
+    ports:
+      - "8005:8005"
+    environment:
+      - PORT=8005
+      - DATABASE_URL=sqlite:///./prescription.db
+      - PRESCRIPTION_SERVICE_HOST=0.0.0.0
+      - PRESCRIPTION_SERVICE_PORT=8005
+    volumes:
+      - .:/app
+      - prescription-db:/data
+
+volumes:
+  prescription-db:
+
